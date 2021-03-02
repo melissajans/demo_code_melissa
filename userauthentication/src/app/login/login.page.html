@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title class="text-center">login</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Login</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <form (ngSubmit)="login(frm)" #frm="ngForm">
+                <ion-item>
+                    <ion-label position="floating" class="--background">E-mail</ion-label>
+                    <ion-input name="email" #u="ngModel" ngModel type="email" required email></ion-input>
+                </ion-item>
+                <ion-item lines="none" *ngIf="u.invalid&&u.touched">
+                    <ion-label size="small"><sub>(Fout emailadres)</sub></ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-label position="floating">Wachtwoord</ion-label>
+                    <ion-input name="pass" #p="ngModel" ngModel type="password" required></ion-input>
+                </ion-item>
+                <ion-item lines="none" *ngIf="p.invalid&&p.touched">
+                    <ion-label size="small"><sub>(Fout wachtwoord)</sub></ion-label>
+                </ion-item>
+                <div class="ion-margin-top">
+                    <ion-button type="submit" [disabled]="!frm.valid">Inloggen</ion-button>
+                    <ion-button type="button" routerLink="/registreer">Registreer</ion-button>
+                </div>
+            </form>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

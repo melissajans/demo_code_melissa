@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Bestelling } from '../bestelling';
+import { BestellingService } from '../bestelling.service';
 import { Klant } from '../klant';
+import { KlantService } from '../klant.service';
 import { MedewerkerService } from '../medewerker.service';
 
 @Component({
@@ -12,26 +14,11 @@ import { MedewerkerService } from '../medewerker.service';
 export class BestellingenComponent implements OnInit {
   public bestellingen : Bestelling[] = [];
 
-  constructor(private router: Router, private ms: MedewerkerService) { }
-
-  // ngOnInit(): void {
-  //   this.ms.getKlanten().subscribe(klanten => {
-  //     this.ms.getBestellingen().subscribe(data=>{
-  //       this.bestellingen = data;
-  //       this.bestellingen.forEach((e)=>{
-  //         let kl = klanten.filter((k) =>{
-  //          return k.id == e.klantid
-  //         })[0];
-  //         e.klantOBJ = kl
-  //       })
-  //     });
-  //   })
-
-  // }
+  constructor(private router: Router, private ms: MedewerkerService, private bs: BestellingService, private ks: KlantService) { }
 
   ngOnInit(): void {
-    this.ms.getKlanten("").subscribe(klanten => {
-      this.ms.getBestellingen().subscribe(data=>{
+    this.ks.getKlanten("").subscribe(klanten => {
+      this.bs.getBestellingen().subscribe(data=>{
        data.forEach((e)=>{
           let kl = klanten.filter((k) =>{
            return k.id == e.klantid

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Bestelling } from '../bestelling';
+import { BestellingService } from '../bestelling.service';
 import { Klant } from '../klant';
-import { MedewerkerService } from '../medewerker.service';
+import { KlantService } from '../klant.service';
 
 @Component({
   selector: 'app-bestelling-detail',
@@ -12,15 +13,15 @@ import { MedewerkerService } from '../medewerker.service';
 export class BestellingDetailComponent implements OnInit {
   public bestelling: Bestelling;
   public klant: Klant;
-  constructor(private activatedRoute: ActivatedRoute, private medewerkersService: MedewerkerService) { }
+  constructor(private activatedRoute: ActivatedRoute, private bs: BestellingService, private ks: KlantService) { }
 
   ngOnInit(): void {
       this.activatedRoute.paramMap.subscribe(
         (route:ParamMap) => {
-          this.medewerkersService.getBestelling(route.get('id')).subscribe(
+          this.bs.getBestelling(route.get('id')).subscribe(
             data =>{
               this.bestelling = data;
-              this.medewerkersService.getKlant(this.bestelling.klantid).subscribe(
+              this.ks.getKlant(this.bestelling.klantid).subscribe(
                 data => {
                   this.klant = data;
                 }
@@ -29,25 +30,6 @@ export class BestellingDetailComponent implements OnInit {
           )
         }
       )
-
-
-  //   this.ms.getKlanten().subscribe(klanten => {
-  //     this.ms.getBestellingen().subscribe(data=>{
-  //      data.forEach((e)=>{
-  //         let kl = klanten.filter((k) =>{
-  //          return k.id == e.klantid
-  //         })[0];
-  //         if(kl == undefined){
-  //           kl = new Klant("", "", "", "", "")
-  //         }
-  //         e.klantOBJ = kl
-  //       })
-  //       this.bestellingen = data;
-  //     });
-  //   })
-  // }
-
-
   }
 }
 

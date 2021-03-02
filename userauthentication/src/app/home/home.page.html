@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+        <ion-title class="text-start">
+            Welkom
+        </ion-title>
+        <ion-button (click)="logOut()" color="danger" slot="end" class="ion-margin-end">
+            Logout
+        </ion-button>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-item lines="none">
+        <ion-avatar slot="start">
+            <img [src]="avatar">
+        </ion-avatar>
+        <ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY HH:mm" [value]="datum" disabled="true"></ion-datetime>
+        </ion-label>
+        <ion-badge>
+            <ion-grid class="ion-no-padding">
+                <ion-row class="ion-justify-content-center ion-align-items-center">
+                    <ion-col>
+                        <ion-icon name="checkmark-circle"></ion-icon>
+                    </ion-col>
+                    <ion-col>
+                        <ion-text>Ingelogd</ion-text>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-badge>
+    </ion-item>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-subtitle color="medium">alleen voor jou zichtbaar</ion-card-subtitle>
+            <ion-card-title>data</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-grid>
+                <ion-row class="ion-align-items-center">
+                    <ion-col size="10">
+                        <ion-input type="text" name="data" [(ngModel)]="data" expand="full">
+                        </ion-input>
+                    </ion-col>
+                    <ion-col size="2" class="ion-padding-top">
+                        <a (click)="deleteData()">
+                            <ion-icon name="close-outline"></ion-icon>
+                        </a>
+                    </ion-col>
+                    <ion-col size="12">
+                        <ion-button (click)="save()" expand="block" color="warning">Bewaren</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Ga naar de chat</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-button routerLink="/items" expand="block">Items</ion-button>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

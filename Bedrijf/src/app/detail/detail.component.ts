@@ -9,16 +9,14 @@ import { MedewerkerService } from '../medewerker.service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-// public id: string;
 public medewerker: Medewerker;
 
-  constructor(private activedRoute: ActivatedRoute, private medewerkerService: MedewerkerService) { }
+  constructor(private activedRoute: ActivatedRoute, private ms: MedewerkerService) { }
 
   ngOnInit(): void {
     this.activedRoute.paramMap.subscribe(
       (route:ParamMap) => {
-        // this.id = route.get('id')
-        this.medewerkerService.getMedewerker(route.get('id'))
+        this.ms.getMedewerker(route.get('id'))
         .subscribe(
           data =>{ this.medewerker = data;}
         )

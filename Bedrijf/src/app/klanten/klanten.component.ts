@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Klant } from '../klant';
-import { MedewerkerService } from '../medewerker.service';
+import { KlantService } from '../klant.service';
 
 @Component({
   selector: 'app-klanten',
@@ -11,10 +11,10 @@ import { MedewerkerService } from '../medewerker.service';
 export class KlantenComponent implements OnInit {
   public klanten: Klant[] = [];
 
-  constructor(private medewerkerService: MedewerkerService, private router: Router) { }
+  constructor(private ks: KlantService, private router: Router) { }
 
   ngOnInit(): void {
-    this.medewerkerService.getKlanten("").subscribe( data =>{
+    this.ks.getKlanten("").subscribe( data =>{
       this.klanten = data;
     });
   }

@@ -1,0 +1,16 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>registreer</ion-title>
+        <ion-buttons>
+            <ion-back-button slot="start"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <h1>Registreer je account</h1>
+    <ion-input name="nickname" placeholder="nickname" #n type="text"></ion-input>
+    <ion-input name="email" placeholder="mail" #u type="email"></ion-input>
+    <ion-input name="pass" placeholder="password" #p type="password"></ion-input>
+    <ion-button (click)="registreer(n.value, u.value, p.value);">Registreer</ion-button>
+</ion-content>

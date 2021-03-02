@@ -3,8 +3,9 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Bestellijn } from '../bestellijn';
 import { Bestelling } from '../bestelling';
+import { BestellingService } from '../bestelling.service';
 import { Klant } from '../klant';
-import { MedewerkerService } from '../medewerker.service';
+import { KlantService } from '../klant.service';
 
 @Component({
   selector: 'app-bestellingnew',
@@ -16,17 +17,17 @@ export class BestellingnewComponent implements OnInit {
   public bestelling: Bestelling = new Bestelling();
   public formNotValid: boolean;
 
-  constructor(private ms: MedewerkerService, private router:Router) { }
+  constructor(private router:Router, private bs: BestellingService, private ks: KlantService) { }
 
   ngOnInit(): void {
-    this.ms.getKlanten("").subscribe(data => {
+    this.ks.getKlanten("").subscribe(data => {
       this.klanten = data;
     });
   }
 
   onSubmit(formulier: NgForm): void {
     if (formulier.valid) {
-      this.ms.addBestelling(this.bestelling).subscribe(data => {
+      this.bs.addBestelling(this.bestelling).subscribe(data => {
         this.router.navigateByUrl('bestellingen');
       })
     } else{

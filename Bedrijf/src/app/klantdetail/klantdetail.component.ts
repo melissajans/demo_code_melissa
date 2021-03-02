@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Klant } from '../klant';
-import { MedewerkerService } from '../medewerker.service';
 import { Location } from '@angular/common';
+import { KlantService } from '../klant.service';
 
 @Component({
   selector: 'app-klantdetail',
@@ -11,12 +11,12 @@ import { Location } from '@angular/common';
 })
 export class KlantdetailComponent implements OnInit {
 public klant: Klant;
-  constructor(private medewerkersService: MedewerkerService, private activatedRoute: ActivatedRoute, private router:Router, private _location: Location) { }
+  constructor(private ks: KlantService, private activatedRoute: ActivatedRoute, private router:Router, private _location: Location) { }
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe(
       (route:ParamMap) => {
-        this.medewerkersService.getKlant(route.get('id')).subscribe(
+        this.ks.getKlant(route.get('id')).subscribe(
           data => {
             this.klant = data;
           }
@@ -30,7 +30,7 @@ public klant: Klant;
   }
 
   verwijderKlant(id:string){
-    this.medewerkersService.deleteKlant(id).subscribe(data=>{
+    this.ks.deleteKlant(id).subscribe(data=>{
       this.router.navigateByUrl('klanten');
     })
   }

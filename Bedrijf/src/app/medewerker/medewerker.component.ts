@@ -11,7 +11,7 @@ export class MedewerkerComponent implements OnInit {
   @Input() persoon: Medewerker = new Medewerker("", "", "");
   @Output() verwijderdeMedewerker = new EventEmitter<boolean>();
 
-  constructor(private medewerkerService: MedewerkerService) { }
+  constructor(private ms: MedewerkerService) { }
 
   ngOnInit(): void {
   }
@@ -21,7 +21,7 @@ export class MedewerkerComponent implements OnInit {
   }
 
   VerwijderMedewerker(id:string){
-    this.medewerkerService.deleteMedewerker(id).subscribe(data =>{
+    this.ms.deleteMedewerker(id).subscribe(data =>{
       this.verwijderdeMedewerker.emit(true)
     });
   }

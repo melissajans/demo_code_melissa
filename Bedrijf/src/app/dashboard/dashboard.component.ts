@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Medewerker } from '../medewerker';
 import { MedewerkerService } from '../medewerker.service';
 
 @Component({
@@ -9,10 +8,10 @@ import { MedewerkerService } from '../medewerker.service';
 })
 export class DashboardComponent implements OnInit {
   public aantalMedewerkers: number;
-  constructor(private medewerkerService: MedewerkerService) { }
+  constructor(private ms: MedewerkerService) { }
 
   ngOnInit(): void {
-    this.medewerkerService.getMedewerkers("").subscribe(
+    this.ms.getMedewerkers("").subscribe(
       data => {
         this.aantalMedewerkers = data.length;
       }

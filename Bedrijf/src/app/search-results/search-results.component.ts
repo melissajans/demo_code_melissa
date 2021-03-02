@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Klant } from '../klant';
+import { KlantService } from '../klant.service';
 import { Medewerker } from '../medewerker';
 import { MedewerkerService } from '../medewerker.service';
 
@@ -18,7 +19,7 @@ export class SearchResultsComponent implements OnInit {
   zoekterm: string;
 
 
-  constructor(private ms: MedewerkerService, private activatedRoute: ActivatedRoute) { }
+  constructor( private ms: MedewerkerService, private ks: KlantService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.state$ = this.activatedRoute.paramMap.pipe(map(() => window.history.state))
@@ -29,10 +30,10 @@ export class SearchResultsComponent implements OnInit {
       this.medewerkers = data;
     })
     this.klanten = [];
-    this.ms.getKlanten(this.zoekterm).subscribe( data => {
+    this.ks.getKlanten(this.zoekterm).subscribe( data => {
       this.klanten.push(...data);
     })
-    this.ms.getKlanten2(this.zoekterm).subscribe( data => {
+    this.ks.getKlanten2(this.zoekterm).subscribe( data => {
       this.klanten.push(...data);
     })
   }
