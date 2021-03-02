@@ -1,0 +1,20 @@
+<h3>Medewerkers</h3>
+
+<div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-primary mb-3" (click)="naarNieuweMedewerker()">
+    Nieuwe medewerker
+  </button>
+</div>
+
+
+<p *ngIf="legelijst()" class="mb-5">Er zijn nog geen medewerkers ingevuld.</p>
+<div *ngIf="!legelijst()" class="mb-5">
+
+    <div class="list-group">
+        <app-medewerker *ngFor="let mw of medewerkers" [persoon]="mw" (verwijderdeMedewerker)="refreshLijst($event)" class="list-group-item list-group-item-action d-flex justify-content-between"></app-medewerker>
+    </div>
+
+    <div class="d-flex justify-content-end mt-2 mb-5">
+        <button class="btn btn-secondary" (click)="lijstWissen()">Alle medewerkers wissen</button>
+    </div>
+</div>

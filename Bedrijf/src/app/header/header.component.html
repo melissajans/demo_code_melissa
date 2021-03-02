@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-3">
+    <i class="fas fa-industry fa-2x text-white mr-2"></i>
+    <a class="navbar-brand" href="#">{{naam}}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <form class="form-inline my-2 my-lg-0 mx-lg-5">
+            <input class="form-control mr-sm-2" type="search" placeholder="Zoeken" aria-label="Search" #zoekterm>
+            <button class="btn btn-secondary my-2 my-sm-0" type="button" (click)="search(zoekterm.value)">Zoeken</button>
+        </form>
+        <ul class="navbar-nav">
+            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                <a class="nav-link" routerLink="">Dashboard</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="medewerkers">Medewerkers</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="klanten">Klanten</a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link" routerLink="bestellingen">Bestellingen</a>
+            </li>
+        </ul>
+    </div>
+</nav>

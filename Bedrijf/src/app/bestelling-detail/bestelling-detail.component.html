@@ -1,0 +1,49 @@
+<h1>Bestelling</h1>
+
+<div class="my-5">
+    <h3>Klant <small><span class="badge badge-dark">{{bestelling.klantid}}</span></small></h3>
+    <ul class="list-unstyled">
+        <li>Nummer </li>
+        <li>{{klant.naam}} {{klant.voornaam}}</li>
+        <li>{{klant.straat}}</li>
+        <li>{{klant.postcode}} {{klant.plaats}}</li>
+    </ul>
+</div>
+
+<div class="card mb-5">
+    <div class="card-body">
+        <h3 class="my-2">Bestelling <small><span class="badge badge-dark">{{bestelling.id}}</span></small></h3>
+        <table class="table table-hover my-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Eenheidsprijs</th>
+                    <th scope="col">Aantal</th>
+                    <th scope="col">Totaal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bestellijn of bestelling.details">
+                    <td>
+                        {{bestellijn.product}}
+                    </td>
+                    <td>
+                        {{bestellijn.prijs}}
+                    </td>
+                    <td>
+                        {{bestellijn.aantal}}
+                    </td>
+                    <td>
+                        {{bestellijn.aantal * bestellijn.prijs}}
+                    </td>
+                </tr>
+                <tr class="table-secondary">
+                    <th scope="col">Product</th>
+                    <th scope="col">Eenheidsprijs</th>
+                    <th scope="col">Aantal</th>
+                    <th scope="col">Totaal</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<h3>Bestellingen</h3>
+
+<div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-secondary mb-3" [routerLink]="['update/new']">
+
+    Nieuwe bestelling
+  </button>
+</div>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">bestelnr</th>
+            <th scope="col">klant</th>
+            <th scope="col">acties</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let b of bestellingen">
+            <td>
+                {{b.id}}
+            </td>
+            <td>
+                {{b.klantOBJ.naam}}
+            </td>
+            <td>
+                <button class="btn btn-secondary" [routerLink]="['/bestellingen',b.id]">details</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

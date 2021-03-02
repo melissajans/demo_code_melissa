@@ -1,0 +1,23 @@
+<h3>Voeg een nieuwe medewerker toe</h3>
+<form name="frm">
+    <div class="form-group">
+        <label for="medewerker">Medewerker</label>
+        <input type="text" class="form-control" name="naam" id="medewerker" [(ngModel)]="naam" />
+    </div>
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" class="form-control" name="email" id="email " [(ngModel)]="email" />
+    </div>
+    <div class="form-group">
+        <label for="afbeelding">Afbeelding</label>
+        <input type="text" class="form-control" name="afbeelding" id="afbeelding" [(ngModel)]="afb" />
+    </div>
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-primary mr-2" [disabled]="veldenLeeg()" (click)="inServiceOpslaan()">
+      Opslaan
+    </button>
+        <button type="button" class="btn btn-primary" [disabled]="veldenLeeg()" (click)="reset()">
+      Reset
+    </button>
+    </div>
+</form>

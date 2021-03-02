@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h2 class="mt-3">Welkom Admin!</h2>
+            <h3>Dashboard</h3>
+            <!-- opdracht A -- teller -->
+            <!-- <app-teller></app-teller> -->
+
+            <!-- opdracht B -- medewerkersformulier -->
+            <!-- <app-medewerkerform></app-medewerkerform> -->
+
+            <!-- opdracht C -- Lijst met medewerkers -->
+            <!-- <app-medewerkerlijst></app-medewerkerlijst> -->
+
+            <!-- opdracht D -- Routing -->
+            <ul>
+                <li>
+                    <a routerLink="" routerLinkActive="actief" [routerLinkActiveOptions]="{exact:true}">Home</a>
+                </li>
+                <li>
+                    <a routerLink="medewerkers" routerLinkActive="actief">Medewerkers</a>
+                </li>
+                <li>
+                    <a routerLink="medewerker" routerLinkActive="actief">Medewerker</a>
+                </li>
+            </ul>
+
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

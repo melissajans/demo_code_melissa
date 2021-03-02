@@ -1,0 +1,12 @@
+<div>
+    <div (click)="geefAlert()">
+        <h4>{{persoon.naam}} </h4>
+        <p>{{persoon.email}}</p>
+        <p>Interne id: ( {{persoon.id}} )</p>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-danger mr-2" (click)="VerwijderMedewerker(persoon.id)">Verwijder</button>
+        <button class="btn btn-primary" [routerLink]="['/medewerkers',persoon.id]">Details</button>
+    </div>
+</div>
+<img class="rounded-circle" width="130px" [src]="persoon.afb" alt="">

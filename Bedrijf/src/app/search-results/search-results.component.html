@@ -1,0 +1,14 @@
+<h3 *ngIf="medewerkers.length">Medewerkers</h3>
+<ul class="list-unstyled">
+    <li *ngFor="let m of medewerkers" class="list-group-item">
+        {{m.naam}}
+    </li>
+</ul>
+
+<h3 *ngIf="klanten.length">klanten</h3>
+<ul class="list-unstyled">
+    <li *ngFor="let k of klanten" class="list-group-item">
+        {{k.naam + " " + k.voornaam}}
+        <button class="btn btn-warning" [routerLink]="['/klanten',k.id]">Details</button>
+    </li>
+</ul>

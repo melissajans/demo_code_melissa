@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-demo-a24e8": {
+      "hosting": {
+        "Bedrijf": [
+          "angular-demo-a24e8"
+        ]
+      }
+    }
+  }
+}

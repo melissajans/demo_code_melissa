@@ -1,0 +1,60 @@
+<form (ngSubmit)="onSubmit(frm)" #frm="ngForm" class="mb-5" name="formulier">
+    <div class="form-group">
+        <label for="naam">Naam: </label>
+        <input type="text" name="naam" class="form-control" ngModel #n="ngModel" required>
+
+        <div *ngIf="n.invalid && (n.dirty || n.touched)">
+            <p class="important">Vul je achternaam in!</p>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="voornaam">Voornaam: </label>
+        <input type="text" name="voornaam" class="form-control" ngModel #vn="ngModel" required>
+
+        <div *ngIf="vn.invalid && (vn.dirty || vn.touched)">
+            <p class="important">Vul je voornaam in!</p>
+        </div>
+
+        <!-- ingebakken bootstrap classes -->
+        <!-- [class.is-valid]="vn.valid" [class.is-invalid]="(vn.touched&&!vn.valid)" -->
+
+    </div>
+    <div class="form-group">
+        <label for="straat">Straat en nr: </label>
+        <input type="text" name="straat" class="form-control" ngModel #str="ngModel" required>
+
+        <div *ngIf="str.invalid && (str.dirty || str.touched)">
+            <p class="important">Vul een straat en nummer in!</p>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="postcode">Postcode: </label>
+        <input type="text" name="postcode" class="form-control" [(ngModel)]="klant.postcode" required minlength="4" #code="ngModel">
+
+        <div *ngIf="code.invalid && (code.dirty || code.touched)">
+            <div *ngIf="code.errors.required">
+                <p class="important">Geef een postcode!</p>
+            </div>
+            <div *ngIf="code.errors.minlength">
+                <p class="important">Minimaal 4 karakters!</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="plaats">Plaats: </label>
+        <input type="text" name="plaats" class="form-control" ngModel required #plaats="ngModel">
+
+        <div *ngIf="plaats.invalid && (plaats.dirty || plaats.touched)">
+            <p class="important">Vul een plaats in!</p>
+        </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Opslaan</button>
+</form>
+
+<div *ngIf="formNotValid">
+    <p class="important"><strong>Je informatie is niet correct ingevuld en ook niet doorgestuurd. Probeer het opnieuw!</strong></p>
+</div>

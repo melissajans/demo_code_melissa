@@ -1,0 +1,62 @@
+<div class="mb-5">
+    <form (ngSubmit)="onSubmit(frm)" #frm=ngForm name="frm">
+
+        <div class="card">
+            <div class="card-body">
+                <h3>Klant</h3>
+                <div class="form-group">
+                    <label for="klanten">Kies je klant:</label>
+                    <select class="form-control" name="klantid" id="klantid" [(ngModel)]="bestelling.klantid">
+                    <option *ngFor="let k of klanten" [value]="k.id">{{k.naam}}</option>
+                </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <h3>Items</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">&nbsp;</th>
+                            <th scope="col">Product</th>
+                            <th scope="col">Prijs</th>
+                            <th scope="col">Aantal</th>
+                            <th scope="col">Totaal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let bestellijn of bestelling.details ; index as i ; trackBy:trackByItems">
+                            <td scope="row">
+                                <button type="button" class="btn btn-danger" (click)="removeBestellijn(i)">&nbsp;-&nbsp;</button>
+                            </td>
+                            <td>
+                                <input [(ngModel)]="bestellijn.product" name="product_{{i}}" type="text" class="form-control">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="bestellijn.prijs" name="prijs_{{i}}" type="text" class="form-control">
+                            </td>
+                            <td>
+                                <input [(ngModel)]="bestellijn.aantal" name="aantal_{{i}}" type="text" class="form-control">
+                            </td>
+                            <td *ngIf="!'Nan'">
+                                <p class="form-control">
+                                    {{bestellijn.prijs * bestellijn.aantal}}
+                                </p>
+                            </td>
+                        </tr>
+                        {{bestelling | json}}
+                        <button class="btn btn-primary" type="button" (click)="addBestellijn()">+Toevoegen</button>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <button class="btn btn-primary mt-3" type="submit">Bestelling opslaan</button>
+        <button class="btn btn-danger mt-3 ml-2" type="button" [routerLink]="['/bestellingen']">Annuleren</button>
+    </form>
+
+    <div *ngIf="formNotValid">
+        <p class="text-danger my-2">Je informatie is niet correct ingevuld en ook niet doorgestuurd. Probeer het opnieuw!</p>
+    </div>
+</div>

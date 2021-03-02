@@ -1,0 +1,34 @@
+<div class="text-center">
+    <h1 class="mt-5">Movie App</h1>
+    <form class="d-flex justify-content-center">
+        <input type="text" name="naam" placeholder="Film, Serie, ..." name="Search" #searchReference>
+        <button type="button" class="btn btn-primary mx-2" (click)=zoekenFilms(searchReference)>Zoeken</button>
+        <button type="button" class="btn btn-danger" (click)="gaNaarFavo()">Toon favorieten</button>
+    </form>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <!-- film -->
+        <ul *ngIf="films.length" class="list-group col m-3 p-0 rounded bg-light">
+            <li *ngFor="let f of films" class="row mx-0 p-3 border-bottom rounded">
+                <div class="col">
+                    <!-- <img [src]="film.Poster" *ngIf="film.Poster != 'N/A'" class="img-fluid">
+                  <img src="https://static.thenounproject.com/png/3482632-200.png" *ngIf="film.Poster == 'N/A'" class="img-fluid">
+                 -->
+                    <img [src]="CheckPoster(f)" class="img-fluid">
+                </div>
+                <div class="col">
+                    <h2>{{f.Title}}</h2>
+                    <p>{{f.Year}} {{f.imdbID}}</p>
+                    <button type="button" class="btn btn-primary" (click)="zoekenPlot(f.imdbID)">Toon plot</button>
+                    <!-- <button type="button" class="btn btn-primary" (click)="verschijn()">Toon plot</button> -->
+                </div>
+            </li>
+        </ul>
+
+        <!-- filmdetail (plot) -->
+        <app-filmdetail *ngIf="SelectedFilm" [filmdetail]="SelectedFilm" id="appDetail" class="col m-3 rounded"></app-filmdetail>
+    </div>
+</div>
